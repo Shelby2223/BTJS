@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .yeardiv{
+            margin-left: 7%;
+        }
+        .btn{
+            margin-left: 5%;
+        }
+        #amountwater,#amountfruit{
+            width: 50px;
+
+        }
+        #form{
+            text-align: center;
+            margin-top: 10%;
+        }
+        #pricewater,#pricefruit{
+            border: none;
+        }
+        input{
+            width: 40px;
+        }
+    </style>
+
+    <form id='form' name="form" action="#" method="post">
+        <label>Types of water:  </label>
+        <select id="water">
+            <option value="0">KHÔNG CHỌN</option>
+            <option value="Nước suối">NƯỚC SUỐI</option>
+            <option value="COCA">COCA COLA</option>
+            <option value="7UP">7 UP</option>
+            <option value="Pessi">PESSI</option>
+            <option value="Cam ép">CAM ÉP</option>
+            <option value="Sting">STING</option>
+            <option value="Redbull">BÒ HÚC</option>
+        </select>
+        <label>Giá:</label>
+        <input class="form-control" id="pricewater"></input>
+        <br>
+        <br>
+        <p>
+            <label>Số lượng:</label>
+            <input class="form-control" type="number" id="amountwater" onkeyup="functionprice()">
+        </p>
+        <br>
+        <br>
+        <label>Fruit: </label>
+        <select id="fruit">
+            <option value="0">KHÔNG CHỌN</option>
+            <option value="Trái cây lớn">TRÁI CÂY LỚN</option>
+            <option value="Trái cây nhỏ">TRÁI CÂY NHỎ</option>
+            <option value="Bưởi">BƯỞI</option>
+        </select>
+        <label>Giá:</label>
+        <input class="form-control" id="pricefruit"></input>
+        <br>
+        <br>
+        <p>
+            <label>Số lượng:</label>
+            <input class="form-control" type="number" id="amountfruit" onkeyup="functionprice()">
+        </p>
+        <br><br>
+        <label>Your money: </label>
+        <input class="form-control" type="number" id="ymn">
+        <br>
+        <br>
+        <label>TOTAL CASH:</label>
+        <input class="form-control" type="text" id="tc">
+        <br><br>
+        <p id="display"></p>
+        <br>
+        <br>
+        <div class="btn">
+            <input type="button" name="btn" onclick="functionok()" value="ok">
+            <input type="button" name="btncancle" onclick="functioncan()" value="Cancle">
+        </div>
+    </form>
+    <script>
+        function functionok(){
+            var water = document.getElementById("water").value;
+            var fruit = document.getElementById("fruit").value;
+            var ymn = document.getElementById("ymn").value;
+            var amountwater = document.getElementById("amountwater").value;
+            var amountfruit = document.getElementById("amountfruit").value;
+            var resultwater; 
+            var resultfruit;
+            switch (water) {
+                case "0":
+                    resultwater=0;
+                    break;
+                case "Nước suối":
+                    resultwater=15000*amountwater;
+                    break;
+                case "COCA":
+                    resultwater=17000*amountwater;
+                    break;
+                case "7UP":
+                    resultwater=17000*amountwater;
+                    break;
+                case "Pessi":
+                    resultwater=15000*amountwater;
+                    break;
+                case "Cam ép":
+                    resultwater=17000*amountwater;
+                    break;
+                case "Sting":
+                    resultwater=17000*amountwater;
+                    break;
+                case "Redbull":
+                    resultwater=20000*amountwater;
+                    break;
+            }
+            switch (fruit) {
+                case "0":
+                    resultfruit=0;
+                    break;
+                case "Trái cây lớn":
+                    resultfruit=100000*amountfruit;
+                    break;
+                case "Trái cây nhỏ":
+                    resultfruit=50000*amountfruit;
+                    break;
+                case "Bưởi":
+                    resultfruit=30000*amountfruit;
+                    break;
+            }
+            var total=resultwater+resultfruit;
+            if (total>ymn){
+                document.getElementById("display").innerHTML="Quý khách không đủ tiền! Vui lòng nạp thêm tiền";
+            }else if (total<=ymn){
+                document.getElementById("display").innerHTML="Cảm ơn quý khách! Chúc quý khách ngon miệng ♥ <br> <br> Hóa đơn: "+water+"("+amountwater+") and "+fruit+"("+amountfruit+")"+"<br><br>Tiền thừa của quý khách: "+""+(ymn-total)+"đ";
+            }
+            document.getElementById("tc").value=total;  
+        }
+        function functionprice(){
+            var x = document.getElementById("amountwater").value;
+            var water = document.getElementById("water").value;
+            var fruit = document.getElementById("fruit").value;
+            var ymn = document.getElementById("ymn").value;
+            var amountwater = document.getElementById("amountwater").value;
+            var amountfruit = document.getElementById("amountfruit").value;
+            var resultwater; 
+            var resultfruit;
+            switch (water) {
+                case "0":
+                    resultwater=0;
+                    document.getElementById("pricewater").value=resultwater
+                    break;
+                case "Nước suối":
+                    resultwater=15000*amountwater;
+                    document.getElementById("pricewater").value=resultwater
+                    break;
+                case "COCA":
+                    resultwater=17000*amountwater;
+                    document.getElementById("pricewater").value=resultwater
+                    break;
+                case "7UP":
+                    resultwater=17000*amountwater;
+                    document.getElementById("pricewater").value=resultwater
+                    break;
+                case "Pessi":
+                    resultwater=15000*amountwater;
+                    document.getElementById("pricewater").value=resultwater
+                    break;
+                case "Cam ép":
+                    resultwater=17000*amountwater;
+                    document.getElementById("pricewater").value=resultwater
+                    break;
+                case "Sting":
+                    resultwater=17000*amountwater;
+                    document.getElementById("pricewater").value=resultwater
+                    break;
+                case "Redbull":
+                    resultwater=20000*amountwater;
+                    document.getElementById("pricewater").value=resultwater
+                    break;
+            }
+            switch (fruit) {
+                case "0":
+                    resultfruit=0;
+                    document.getElementById("pricefruit").value=resultfruit
+                    break;
+                case "Trái cây lớn":
+                    resultfruit=100000*amountfruit;
+                    document.getElementById("pricefruit").value=resultfruit
+                    break;
+                case "Trái cây nhỏ":
+                    resultfruit=50000*amountfruit;
+                    document.getElementById("pricefruit").value=resultfruit
+                    break;
+                case "Bưởi":
+                    resultfruit=30000*amountfruit;
+                    document.getElementById("pricefruit").value=resultfruit
+                    break;
+            }
+        }
+    </script>
+    
+</body>
+</html>
+
+    

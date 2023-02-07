@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="nhap">
+    <button onclick="myf()">try</button>
+    <p id="demo"></p>
+    <script>
+        function myf(){
+            var number=document.getElementById("nhap").value;
+            if (number==0){
+                document.getElementById("demo").innerHTML="khong am khong duong";
+                document.getElementById("demo").style.color="purple";
+            } else if (number>0){
+                document.getElementById("demo").innerHTML="so duong";
+                document.getElementById("demo").style.color="blue";
+            }else if (number<0){
+                document.getElementById("demo").innerHTML="so am";
+                document.getElementById("demo").style.color="red";
+            }
+        }
+    </script>
+
+
+    <form name="form" action="#" method="post">
+        <label>input name: </label>
+        <input type="text" name="name2" value="">
+        <br>
+        <label> input score: </label>
+        <input type="text" name="namescore" value="">
+        <input type="button" name="btn" onclick="grade(namescore.value,name2.value)" value="define grade">
+    </form>
+    <div id="str_grade">==></div>
+    <script>
+        function grade(score,name){
+         var str_gra;
+         if (score >=90 && score <=100){
+            str_gra="Exelence";
+        } else if (score >=80 && score <=90){
+            str_gra="very good";
+        }else if (score >=60 && score <=80){
+            str_gra="Fair";
+        } else if (score >=50 && score <=60){
+            str_gra="Medium";
+        }else if (score >=0 && score <=50){
+            str_gra="Fail";
+        }else{
+            str_gra="Score must be between 0 and 100";
+        }
+        document.getElementById("str_grade").innerHTML=name+"'s grade is <b>"+str_gra+"</b>";
+    }
+    </script>
+</body>
+</html>

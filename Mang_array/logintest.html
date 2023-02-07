@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="form">
+        <h1>User register: </h1>
+        <label>User names:
+            <br>
+            <input type="text" id="userrt" name="userrt">
+        </label>
+        <br>
+        <label>Passwords:
+            <br>
+            <input type="password" id="passrt" name="passrt">
+        </label>
+        <br>
+        <br>
+        <button type="button" onclick="register()" id="login">register</button>
+        <button type="button" onclick="canclert()" id="cancle">Cancle</button>
+    </div>
+    <div id="form">
+        <h1>User Login: </h1>
+        <label>User names:
+            <br>
+            <input type="text" id="userlg" name="userlg">
+        </label>
+        <br>
+        <label>Passwords:
+            <br>
+            <input type="text" id="passlg" name="passlg">
+        </label>
+        <br>
+        <br>
+        <button type="button" onclick="login()" id="login">Login</button>
+        <button type="button" onclick="cancle()" id="cancle">Cancle</button>
+    </div>
+    <script>
+        var userrt = [];
+        var pass = [];
+        function register() {
+            var registername = {
+                userdk: document.getElementById("userrt").value,
+            }
+            var registerpass = {
+                passdk: document.getElementById("passrt").value,
+            }
+
+            console.log(registername);
+            console.log(registerpass)
+
+            userrt.push(registername);
+            pass.push(registerpass);
+            alert ("Đăng ký thành công!")
+            document.getElementById("userrt").value = "";
+            document.getElementById("passrt").value = "";
+
+
+        };
+        function login() {
+            for (i in userrt) {
+                if (userrt[i].userdk == document.getElementById("userlg").value) {
+                    for (j in pass) {
+                        if (pass[i].passdk == document.getElementById("passlg").value) {
+                            alert ("Đăng nhập thành công!")
+                            location.href = "https://www.google.com.vn/?hl=vi";
+                        } else {
+                            alert("you don't belong this web")
+                        }
+                    }
+                } else {
+                    alert("you don't belong this web")
+                }
+            };
+        }
+        function cancle() {
+            document.getElementById("userlg").innerHTML = "";
+            document.getElementById("passlg").innerHTML = "";
+            document.getElementById("userlg").focus();
+        }
+        function canclert() {
+            document.getElementById("userrt").innerHTML = "";
+            document.getElementById("passrt").innerHTML = "";
+            document.getElementById("userrt").focus();
+        }
+    </script>
+</body>
+
+</html>
